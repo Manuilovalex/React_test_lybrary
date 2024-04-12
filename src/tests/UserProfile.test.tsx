@@ -6,7 +6,7 @@ import UserProfile from '../components/UserProfile';
 fetchMock.enableMocks();
 
 test('renders user data after fetching', async () => {
-  const userData = { id: 1, name: 'John Doe', email: 'john@example.com' };
+  const userData = { id: 1, name: 'John Doe', username: "Bret", email: 'john@example.com' };
 
   const response = new Response(JSON.stringify(userData), {
     status: 200,
@@ -23,11 +23,13 @@ test('renders user data after fetching', async () => {
 
   expect(screen.getByText('User Profile')).toBeInTheDocument();
   expect(screen.getByText(`Name: ${userData.name}`)).toBeInTheDocument();
+  expect(
+    screen.getByText(`Username: ${userData.username}`)
+  ).toBeInTheDocument();
   expect(screen.getByText(`Email: ${userData.email}`)).toBeInTheDocument();
 });
 
 test('renders error message on failed fetch', async () => {
-
   fetchMock.mockRejectedValueOnce(new Error('Failed to fetch'));
 
   render(<UserProfile />);

@@ -34,6 +34,7 @@ const UserProfile: React.FC = () => {
     <div>
       <h2>User Profile</h2>
       <p>Name: {userData.name}</p>
+      <p>Username: {userData.username}</p>
       <p>Email: {userData.email}</p>
     </div>
   );

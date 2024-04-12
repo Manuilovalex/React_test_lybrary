@@ -27,7 +27,6 @@ test('renders user data after fetching', async () => {
 });
 
 test('renders error message on failed fetch', async () => {
-  const response = new Response(null, { status: 500 });
 
   fetchMock.mockRejectedValueOnce(new Error('Failed to fetch'));
 
